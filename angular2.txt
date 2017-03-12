@@ -1,0 +1,234 @@
+Building Blocks of Angular 2 with TypeScript
+# Building Blocks
+
+Directives
+* Component- Templates (HTML), Styles (CSS), & Logic (JavaScript)
+* Attribute- Styrling HTML
+
+Data Flow
+* Interpolation- Variable Printing in Templates
+* Event Binding- Trigger Events
+2-Way Binding- Variables updated in real time
+
+Providers
+* Services
+	* Reusable Logic
+	* Data Storing and Manipulation
+* Libraries
+
+
+Component Directives
+@Component({
+	selector: 'my-app',
+	template: '<h3>Task List Application</h3>',
+	styles: ['h3 { color:gray; }']
+})
+export class MyAppComponent {
+	console.log("Hello Angular");
+}
+<my-app></my-app>
+
+
+Attribute Directives-
+can change the appearence or behavior of an element.
+Attribute Directives include:
+* [class.red]="true"
+* [ngClass]="{ red: true, box: true }"
+* [ngStyle]="{ background-color: blue, color: black}"
+* [customOnHoverHighlight]
+
+
+Data Flow- 2 Way Binding
+@Component({
+	selector: 'my-app',
+	template: '
+	<h3> Task List Application</h3>
+	<input [value]="num" (keyup)="num = $event.target.value" >
+	<input [(ngModel)]="num">
+	'
+})
+export class MyAppComponent {
+	num = ""
+}
+click, mouseenter, mouseleave, submit, etc...
+
+
+Providers- Services
+@Input()
+export class TaskService{
+	tasks = ["first Task", "Second Task"];
+	getTasks(){
+		return this.tasks;
+	}
+	addTask(task){
+		this.tasks.push(task);
+	}
+}
+
+app/main.ts
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { Component, OnInit, Injectable} from '@angular/core';
+@Component()
+export class TaskService {
+	tasks = ["First Task", "Second Task"];
+}
+@Component({
+	selector: 'tasks',
+	providers: [TaskService],
+	template: '<h4> This is the Task Component</h4>
+	{{ taskService.task | json }}'
+})
+export class TasksComponent implements OnInit {
+	constructor(public taskService: TaskService){ }
+	ngOnInit(){}
+}
+
+
+Providers- Routes
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+@Component({
+	selector: 'my-app',
+	directives: [ROUTER_DIRECTIVES],
+	providers: [ROUTER_PROVIDERS],
+	template: '<nav>
+	<a href="" [routerLink]="['Notes']">Notes</a>
+	<a href="" [routerLink]="['Tasks']">Tasks</a>
+	</nav>
+	<router-outlet></router-outlet>
+	'
+})
+@RouterConfig([
+	{path: '/notes', name: 'Notes', component: NotesComponent, useAsDefault: true},
+	{path: '/tasks', name: 'Tasks', component: TasksComponent}
+])
+
+
+Providers- Observables
+import { HTTP_PROVIDERS, Http, Response } from '@angular/http';
+import { Observable }from 'rxjs/Observable';
+@Input()
+export class TaskService{
+	tasks;
+	getTasks(){
+		var aPromise = this._http.get('tasks.json')
+		.map((response: Response) => response.json().data)
+		.toPromise()
+		.catch(this.handleError)
+		aPromise.then(tasks => {
+			console.log("Then:", tasks)
+			this.tasks = tasks;
+		});
+	}
+}
+
+
+Components in Components
+@Component({
+	selector: 'parent',
+	directives: [ChildComponent]
+	template: '<h3>Parent Component</h3>
+	<child></child>'
+})
+export class ParentComponent{
+	
+}
+@Component({
+	selector: 'child',
+	template: '<h4>Child Component</h4>'
+})
+export class ChildComponent{
+	
+}
+
+
+Providers in Components
+@Component({
+	selector: 'parent',
+	providers: [TaskService, HTTP_PROVIDERS],
+	template: '<h3>Parent Component</h3>'
+})
+export class ParentComponent{
+	constructor(public taskService: TaskService){
+		tasks = this.taskService.tasks;
+	}
+}
+@Input()
+export class TaskService{
+	tasks = ["First Task", "Second Task"];
+	getTasks(){
+		return this.tasks;
+	}
+}
+
+
+Install Angular
+Simple: https://angular.io/docs/ts/latest/quickstart.html
+Extensive: https://github.com/angular/angular-cli
+Angular CLI
+Command Line Tool
+#ng new TaskApp
+#ng generate component TaskComponent
+#ng generate route
+
+
+TypeScript
+let stocks = ['APPL', 'GOOG', 'FB', 'AMZN'];
+let template = '<h1> </h1>
+				<p> </p>'; 
+//let allows to declare multiline without Escape symbol(\)
+ES6 Modules-> import {Service } from './Service';
+export class Dashboard {
+	constructor(){
+		this.symbols = Service.get();
+	}
+}
+ES7 Decorators- @Component({selector: 'app'})
+export class App {
+	
+}
+=> TypeScript interfaces & Type Declarations
+interface StockInterface{
+	symbol: String,
+	lastTradePriceOnly: number,
+	change: number,
+	changeIncrement: number
+}
+let stocks: Array<StockInterface> = [];
+=> TypeScript ReferenceType Definations
+/// <reference path="../typings/tsd.d.ts"/>
+
+Choose Angular when- Large Project, Large Dev Team, Openionated Framework, complex and SPA.
+
+TypeScript Features- Strongly Type, Modules & classes,
+templateStrings, interfaces, generics
+
+eg. function square(num: number): number { 
+		return num*num;
+	} //second number is return type of function
+eg. class Person{
+	constructor(public name: string){ }
+}
+Data Types- string, number, any, boolean, date
+Component Directive-
+@Component({
+	selector: 'my-app',
+	directives: [],
+	providers: [],
+	templateUrl: 'app.component.html',
+	styleUrls: ['app.component.css']
+})
+export class MyAppComponent{ }
+In html use-> 
+<my-app></my-app>
+<input [value]="myNumberCtrlVar"/>
+<button (click)="doThisCtrlFn()"></button>
+Structural Directives->
+*ngIf, *ngFor (same as ng-repeat)
+<ul *ngIf="listArr">
+<li *ngFor="let task of listArr"> {{task}}</li>
+</ul>
+
+
+
+
+

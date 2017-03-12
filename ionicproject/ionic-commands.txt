@@ -1,0 +1,22 @@
+Install Cordova
+#npm install -g cordova
+
+Install ionic cli
+#npm install -g ionic
+#ionic info
+
+Install typescript
+#npm install -g typescript
+
+Create ionic project on template
+#ionic stat githubIonic tutorial --v2
+#npm install //install node dependencies
+
+Start ionic server
+#ionic serve
+View project for all mobile plateforms
+#ionic serve -l //l = lab
+
+Generate components
+#ionic generate page users //will generate users-component in pages folder
+#ionic g prvider github-users
