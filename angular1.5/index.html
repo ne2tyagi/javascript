@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html  ng-app = "TestApp">
+<head>
+	<title>Angular services</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="angular-route.js"></script>
+</head>
+<body>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/ng-template" id="testpageTemplate.html">
+	Test page template
+</script>
+	<div>
+		<div ng-controller = "MainCtrl">
+			<p>{{fromService}}</p>
+			<p>{{fromFactory}}</p>
+			<p>{{fromProvider}}</p>
+			<a ng-href="#!/h">Home Page</a>
+			<a ng-href="#!/testpage">Test Page</a>
+			
+		</div>
+	</div>
+	<ng-view></ng-view>
+</body>
+</html>

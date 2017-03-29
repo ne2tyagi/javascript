@@ -1,0 +1,16 @@
+{
+  "name": "browserify-app",
+  "version": "1.0.0",
+  "description": "angular with browserify",
+  "main": "main.js",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "ramda": "^0.23.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "neetu tyagi",
+  "license": "ISC"
+}
