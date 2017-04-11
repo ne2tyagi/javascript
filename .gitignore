@@ -28,7 +28,7 @@ build/Release
 */bundle.js
 
 # Dependency directories
-node_modules
+*/node_modules
 jspm_packages
 
 # Optional npm cache directory
