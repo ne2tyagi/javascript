@@ -2,24 +2,34 @@
 <html  ng-app = "TestApp">
 <head>
 	<title>Angular services</title>
+	<link rel="stylesheet" href="angular-material.min.css" />
 	<script type="text/javascript" src="angular.min.js"></script>
-	<script type="text/javascript" src="angular-route.js"></script>
+	<script type="text/javascript" src="angular-ui-router.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="holidays.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="app.js"></script>
+
 <script type="text/ng-template" id="testpageTemplate.html">
 	Test page template
 </script>
-	<div>
-		<div ng-controller = "MainCtrl">
+	<div style="float:right;width:50%;">
+		<md-content layout-padding><div ng-controller = "MainCtrl">
 			<p>{{fromService}}</p>
 			<p>{{fromFactory}}</p>
 			<p>{{fromProvider}}</p>
 			<a ng-href="#!/h">Home Page</a>
 			<a ng-href="#!/testpage">Test Page</a>
 			
-		</div>
+		</div></md-content>
 	</div>
 	<ng-view></ng-view>
+
+	<p ui-sref=".page1">Click to go to Holidays</p>
+	<div ui-view style="width:50%;">
+
+	</div>
+	
+
 </body>
 </html>

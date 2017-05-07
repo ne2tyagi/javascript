@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-angular.module('TestApp',['ngRoute'])
+angular.module('TestApp',[/*'ngRoute'*/ 'ui.router'])
 	.constant('SampleConst',"Sample constant accessible in config phase.")
 	.service('SimpleServ', function(){
 		this.message = function(){
@@ -65,13 +65,13 @@ angular.module('TestApp',['ngRoute'])
 	.controller('SampleCtrl', function($scope){
 		console.log('SampleCtrl')
 	})
-	.config(function(SimpleProvProvider, $routeProvider, SampleConst,){
+	.config(function(SimpleProvProvider, /*$routeProvider,*/ SampleConst){
 		SimpleProvProvider.setName("valueChangedInConfigPhase");
 		console.log('from config phase', SampleConst);
-		$routeProvider.when('/testpage',{
+		/*$routeProvider.when('/testpage',{
 			templateUrl:"sample.html",
 			controller: "SampleCtrl"
-		}).otherwise({'redirectTo':'/'});
+		}).otherwise({'redirectTo':'/'});*/
 	})
 	.run(function($templateCache){
 		console.log('from run phase');

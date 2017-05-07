@@ -1,0 +1,14 @@
+<div ui-view="detail"></div>
+<div class="holidaysGrid">
+<md-content layout-padding>
+    <md-list ng-cloak layout="row">
+  <md-subheader class="md-no-sticky">Holidays List</md-subheader>
+  <md-list-item flex="50" ng-repeat="holiday in holidays" ng-if="holiday.length === 1">
+    <p> <a class="md-primary md-button md-ink-ripple" href='#!/holiday/{{holiday[0].date | date :"y/MM/dd"}}'>
+{{holiday[0].name +" on "+ holiday[0].date}}
+</a> </p>
+<md-divider></md-divider>
+  </md-list-item>
+  </md-list>
+  </md-content>
+  </div>
