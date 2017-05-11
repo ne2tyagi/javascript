@@ -5,12 +5,12 @@ import { HolidayComponent } from './holidays/holiday.component';
 @Component({
   selector: 'my-app',
   template: `
-  <md-content>
   <h1 class="md-title">Holidays USA 2015 {{name}}</h1>
-  <nav>
-  	<a routerLink="/holidays">Holidays</a>
-  	<a routerLink="/home">Home</a>
+  <nav class="mat-nav-list">
+  	<h3><a class="md-primary md-button md-ink-ripple" routerLink="/holidays">Holidays</a>
+    <a class="md-primary md-button md-ink-ripple" routerLink="/home">Home</a></h3>
   </nav>
+  <md-content  layout-padding>
   <router-outlet></router-outlet>
   </md-content>`
 })

@@ -1,5 +1,7 @@
-<md-list>
+<md-card>
+<md-list class="mat-nav-list">
 	<md-list-item *ngFor="let holiday of holidays">
 		<a [routerLink]="['/holidayDetail',holiday.name]">{{holiday.name}}</a>
 	</md-list-item>
 </md-list>
+</md-card>

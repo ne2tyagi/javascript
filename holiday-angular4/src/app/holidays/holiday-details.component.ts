@@ -16,7 +16,8 @@ export class HolidayDetailsComponent implements OnInit{
 	}
 
 	ngOnInit(): void { 
-		const params = this.route.params._value;
-		this.details = this.holidayService.getHolidayDetails(params.holidayName);
+		this.route.params.subscribe(params =>{
+		this.details = this.holidayService.getHolidayDetails(params['holidayName']);
+	})
 	}
 }
