@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script src="/node_modules/systemjs/dist/system.js"></script>
+
+<script src="/node_modules/tslib/tslib.js"></script>
+
+</head>
+<body>
+<button id="start">Start</button>
+<script>
+System.config({
+	baseUrl: "sample/",
+ packages: {
+  "dist": {
+   "defaultExtension": "js",
+   "main": "main"		
+  }
+ },
+ map: {
+  "@reactivex/rxjs": "/node_modules/@reactivex/rxjs/dist/global/Rx.js",
+  "jquery": "/node_modules/jquery/dist/jquery.js"
+ }
+});
+
+System.import("dist");
+System.import("jquery");
+</script>
+</body>
+</html>

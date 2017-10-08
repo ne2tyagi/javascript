@@ -3,7 +3,7 @@ Building Blocks of Angular 2 with TypeScript
 
 Directives
 * Component- Templates (HTML), Styles (CSS), & Logic (JavaScript)
-* Attribute- Styrling HTML
+* Attribute- Styling HTML
 
 Data Flow
 * Interpolation- Variable Printing in Templates

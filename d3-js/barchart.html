@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bar Chart</title>
+<script src="d3.js"></script>
+</head>
+<body>
+<style>.chart div{background-color:cyan;text-align:right;}</style>
+<script>
+var data = [4,8,15,16,23,42];
+d3.select('body').append('div').attr('class','chart');
+
+var x = d3.scaleLinear()
+ .domain([0, d3.max(data)]).range([0, 420]);
+
+d3.select('.chart')
+ .selectAll('div').data(data).enter()
+ .append('div').style('width',function(d){
+   return x(d) +"px";
+ }).text(function(d){ return d; });
+</script>
+
+</body>
+</html>
