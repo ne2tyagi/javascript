@@ -1,0 +1,14 @@
+<p>
+  my-form works!
+</p>
+<form [formGroup]="myForm" (ngSubmit)="inputUp()" novalidate="">
+	<input formControlName="name" />
+	{{myForm.controls.name.errors | json }}
+	<input formControlName="email" />
+	{{myForm.controls.email.errors | json}}
+
+	<label>
+	<input type="checkbox" formControlName="newValid" (ngClick)="setAnotherValidation(newValid)">
+		Set new validations
+	</label>
+</form>
